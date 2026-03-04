@@ -126,6 +126,35 @@ Then just run::
 
 Application will be available on ``localhost`` in your browser.
 
+AI Agent Endpoint
+-----------------
+
+This fork adds an ``/api/agent`` endpoint that allows you to send natural
+language commands to an AI agent powered by LangChain and OpenAI. The agent
+uses tools that internally call the existing CRUD logic for articles,
+profiles, users and comments.
+
+To use the agent endpoint you must:
+
+* Set the ``OPENAI_API_KEY`` environment variable (required for all requests)
+* Have a valid JWT token for an authenticated user **when you want to perform
+  write actions** such as creating articles or comments. Read-only queries
+  (for example listing articles or reading profiles) can be made without a
+  token, but the agent will not be able to act on behalf of a user.
+
+Example request::
+
+    curl -X POST "http://localhost:8000/api/agent" \
+         -H "Content-Type: application/json" \
+         -d '{"query": "show me the article test-slug"}'
+
+Example write request (requires JWT token)::
+
+    curl -X POST "http://localhost:8000/api/agent" \
+         -H "Content-Type: application/json" \
+         -H "Authorization: Token <YOUR_JWT_TOKEN>" \
+         -d '{"query": "create an article about FastAPI and LangChain"}'
+
 Web routes
 ----------
 
