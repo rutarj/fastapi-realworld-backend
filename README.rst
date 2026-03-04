@@ -126,6 +126,10 @@ Then just run::
 
 Application will be available on ``localhost`` in your browser.
 
+
+
+
+
 AI Agent Endpoint
 -----------------
 
@@ -140,7 +144,7 @@ To use the agent endpoint you must:
 * Have a valid JWT token for an authenticated user **when you want to perform
   write actions** such as creating articles or comments. Read-only queries
   (for example listing articles or reading profiles) can be made without a
-  token, but the agent will not be able to act on behalf of a user.
+  token, but the agent will not be able to act on behalf of a user. 
 
 Example request::
 
