@@ -75,3 +75,4 @@ async def test_agent_read_only_get_article(
     first_call = payload["tool_calls"][0]
     assert first_call["tool"] == "get_article"
     assert first_call["args"]["slug"] == "test-slug"
+
